@@ -5,10 +5,6 @@ if !has('lambda')
 	finish
 endif
 
-if exists('b:current_syntax')
-  finish
-endif
-
 let s:cpo_save = &cpo
 set cpo&vim
 " }}}
