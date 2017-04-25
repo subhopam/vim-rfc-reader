@@ -94,4 +94,4 @@ let b:current_syntax = "rfc"
 let &cpo = s:cpo_save
 unlet s:cpo_save
 " }}}
-" vim:ts=2 fdm=marker
+" vim:ts=2 fdm=marker ff=unix

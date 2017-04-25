@@ -25,4 +25,4 @@ setlocal shiftwidth=3 tabstop=3 expandtab
 
 "}}}
 
-" vim: ts=2 sw=2 fdm=marker
+" vim: ts=2 sw=2 fdm=marker ff=unix

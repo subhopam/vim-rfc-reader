@@ -68,7 +68,7 @@ function! s:createFoldAtPageBreak()
 
 	let fold_begin = s:determinePageFooterMargin(lnum)
 	let fold_close = s:determinePageHeaderMargin(lnum)
-	
+
 	exe fold_begin . ',' . fold_close . 'fold'
 endfunction
 
@@ -94,4 +94,4 @@ let b:current_syntax = "rfc"
 let &cpo = s:cpo_save
 unlet s:cpo_save
 " }}}
-" vim: ts=2 sw=2 fdm=marker
+" vim: ts=2 sw=2 fdm=marker ff=unix
