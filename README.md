@@ -12,3 +12,7 @@ space between pages, to help you navigate.
 ## Other RFC related plugins
 
 - [rfc syntax](http://www.vim.org/scripts/script.php?script_id=2930): Simple syntax highlight for RFC file
+
+## Good things to do
+
+- support a split view, table of contents on one window, content another
