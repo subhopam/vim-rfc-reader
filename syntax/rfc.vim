@@ -51,7 +51,7 @@ syn region rfcTocRegion start='\v(^Table of Contents\n)@<=' end="^\d"me=e-1 tran
 
 " XXX
 
-syn match SectionHeader	/\v^\n\@=(\u|\d)\S.*\n\@=$/
+syn match SectionHeader	/\v^(\u|\d)\S.*\n\@=$/
 
 syn match rfcPageFooter	/^\S.*\ze\n/
 syn match rfcPageHeader	/^\v(\n)@2<=(RFC|Internet-Draft).*$/
