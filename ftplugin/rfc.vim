@@ -24,5 +24,30 @@ setlocal smartindent
 setlocal shiftwidth=3 tabstop=3 expandtab
 
 "}}}
+"{{{ mappings
 
+" ref jumps
+let b:re_ref = '\[\S\+\]'
+" move to next ref
+nnoremap <silent> ]r :call search(b:re_ref)<CR>
+" move to previous ref
+nnoremap <silent> [r :call search(b:re_ref, 'b')<CR>
+
+" header jumps
+nnoremap <silent> ]h :call SearchRfcHeader(0)<CR>
+nnoremap <silent> [h :call SearchRfcHeader(1)<CR>
+
+function! SearchRfcHeader(reverse)
+	if a:reverse
+		let next = search('^\S', 'b')
+	else
+		let next = search('^\S')
+	endif
+
+	if next != 0 && foldlevel(next) != 0
+		call SearchRfcHeader(a:reverse)
+	end
+endfunction
+
+"}}}
 " vim: ts=2 sw=2 fdm=marker ff=unix
