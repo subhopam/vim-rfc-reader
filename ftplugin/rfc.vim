@@ -17,7 +17,7 @@ setlocal foldmethod=manual
 " search won't open the fold
 setlocal foldopen-=search
 
-setlocal textwidth=72
+setlocal textwidth=70
 
 setlocal smartindent
 
@@ -37,6 +37,9 @@ nnoremap <silent> [r :call search(b:re_ref, 'b')<CR>
 nnoremap <silent> ]h :call SearchRfcHeader(0)<CR>
 nnoremap <silent> [h :call SearchRfcHeader(1)<CR>
 
+" preview reference
+nnoremap <silent> <LEADER>p :call PreviewRfcReference()<CR>
+
 function! SearchRfcHeader(reverse)
 	if a:reverse
 		let next = search('^\S', 'b')
@@ -48,6 +51,18 @@ function! SearchRfcHeader(reverse)
 		call SearchRfcHeader(a:reverse)
 	end
 endfunction
+
+function! PreviewRfcReference()
+	let word = expand('<cWORD>')
+	if match(word, '\[.\+\]') == -1
+		echo word . ' is not a reference'
+		return
+	endif
+	let pattern = '/^\V   ' . word . '/'
+	let command = 'psearch ' . pattern
+	execute command
+endfunction
+
 
 "}}}
 " vim: ts=2 sw=2 fdm=marker ff=unix
