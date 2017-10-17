@@ -49,9 +49,8 @@ syn region rfcDoubleBrackets start='\[\[' end='\]\]'
 " rfcTocRegion confines a Table of Contents secion to a syntax region
 syn region rfcTocRegion start='\v(^Table of Contents\n)@<=' end="^\d"me=e-1 transparent 
 
-" XXX
-
-syn match SectionHeader	/\v^(\u|\d)\S\_.*\n\@=$/
+" SectionHeader is at most two non-empty lines and followed by an empty line
+syn match SectionHeader	/\v^(\u|\d)\S.*(\n   .+)?\n\@=$/
 
 syn match rfcPageFooter	/^\S.*\ze\n/
 syn match rfcPageHeader	/^\v(\n)@2<=(RFC|Internet-Draft).*$/
