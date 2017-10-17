@@ -38,7 +38,7 @@ nnoremap <silent> ]h :call SearchRfcHeader(0)<CR>
 nnoremap <silent> [h :call SearchRfcHeader(1)<CR>
 
 " preview reference
-nnoremap <silent> <LEADER>p :call PreviewRfcReference()<CR>
+nnoremap <silent> <C-W>p :call PreviewRfcReference()<CR>
 
 function! SearchRfcHeader(reverse)
 	if a:reverse
@@ -53,13 +53,15 @@ function! SearchRfcHeader(reverse)
 endfunction
 
 function! PreviewRfcReference()
-	let word = expand('<cWORD>')
-	if match(word, '\[.\+\]') == -1
-		echo word . ' is not a reference'
+	let cword = expand('<cWORD>')
+	let match = matchstr(cword, '\[.\+\]')
+	if match == ""
+		echo cword . ' is not a reference'
 		return
 	endif
-	let pattern = '/^\V   ' . word . '/'
+	let pattern = '/^\V   ' . match . '/'
 	let command = 'psearch ' . pattern
+	echo command
 	execute command
 endfunction
 
